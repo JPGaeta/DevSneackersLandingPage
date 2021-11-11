@@ -19,6 +19,14 @@
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
+<style>
+    #inputEmail:focus-visible{
+        border:1px solid #ff5780 !important;
+    }
+    #inputEmail{
+        outline: none !important;
+    }
+</style>
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap boxed-container">
@@ -59,7 +67,14 @@
                         <div class="hero-copy">
                             <h1 class="hero-title h2-mobile mt-0 is-revealing">DevSneakers</h1>
                             <p class="hero-paragraph is-revealing">Venha controlar suas vendas com DevSneakers!!!</p>
-                            <p class="hero-cta is-revealing"><a class="button button-primary button-shadow" href="#pricing">Preços e planos</a></p>
+                            <div class="hero-form newsletter-form field field-grouped is-revealing" style="visibility: visible; display: flex; justify-content: center">
+                                <div class="control control-expanded" style="flex: 2">
+                                    <input id='inputEmail' class="input textarea" type="email" name="email" placeholder="Digite seu email aqui" style="width: 98%; padding-left: 15px; height: 100%; border-radius: 4px; border: 1px solid #1f2b35;" >
+                                </div>
+                                <div class="control" style="flex: 1">
+                                    <a class="button button-primary button-block button-shadow" href="#" style=" flex: 1;">Compre na pré-venda</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="hero-illustration is-revealing">
                             <!-- <svg width="528" height="413" viewBox="0 0 528 413" xmlns="http://www.w3.org/2000/svg"> -->
@@ -337,12 +352,11 @@
                 </div>
             </section>
         </main>
-
         <footer class="site-footer text-light">
             <div class="container">
                 <div class="site-footer-inner has-top-divider">
                     <div class="brand footer-brand">
-                        <div class="footer-copyright">&copy; 2021 DevSnickers, alguns direitos reservados</div>
+                        <div class="footer-copyright">&copy; 2021 DevSneakers, alguns direitos reservados</div>
                     </div>
                 </div>
             </div>

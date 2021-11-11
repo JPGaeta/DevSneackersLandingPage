@@ -1,94 +1,292 @@
 .hero {
-    position: relative;
-    text-align: center;
-    padding-top: 40px;
+	position: relative;
+	text-align: center;
+	padding-top: 40px;
 
-    &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 230px;
-        width: 80%;
-        background: mix(color(primary, 1), color(primary, 2));
-        background: linear-gradient(to top right, color(primary, 1) 0, color(primary, 2) 100%);
-    }
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		height: 230px;
+		width: 80%;
+		background: mix(color(primary, 1), color(primary, 2));
+		background: linear-gradient(
+			to top right,
+			color(primary, 1) 0,
+			color(primary, 2) 100%
+		);
+	}
 }
 
 .hero-inner {
-    position: relative; /* To display all elements above the background color */
+	position: relative; /* To display all elements above the background color */
 }
 
 .hero-title {
-    @include font-weight(bold);
+	@include font-weight(bold);
 }
 
 .hero-paragraph {
-    margin-bottom: 32px;
+	margin-bottom: 32px;
+}
+.hero-form {
+	max-width: 435px;
+	margin: 0 auto;
+}
+
+.field-grouped {
+	> .control {
+		&:not(:last-child) {
+			margin-bottom: 8px;
+		}
+	}
+}
+
+.input,
+.textarea {
+	background-color: color(#1f2b35, 1);
+	border-width: 1px;
+	border-style: solid;
+	border-color: color(#1f2b35, 3);
+	color: color(typography, 2);
+	max-width: 100%;
+	width: 100%;
+
+	&::placeholder {
+		color: color(typography, 3);
+	}
+
+	&::-ms-input-placeholder {
+		color: color(typography, 3);
+	}
+
+	&:-ms-input-placeholder {
+		color: color(typography, 3);
+	}
+
+	&:hover {
+		border-color: darken(color(bg, 3), 5%);
+	}
+
+	&:active,
+	&:focus {
+		outline: none;
+		border-color: color(primary, 1);
+	}
+
+	&[disabled] {
+		cursor: not-allowed;
+		background-color: color(bg, 2);
+		border-color: color(bg, 2);
+	}
+}
+
+.input {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	@include font-size(7, mobile, true, false, true);
+	@if (get-font-size(7, desktop) != get-font-size(7, mobile)) {
+		@include media(">medium") {
+			@include font-size(7, desktop, true, false, true);
+		}
+	}
+	line-height: 20px;
+	border-radius: 2px;
+	padding: 13px 16px;
+	height: 48px;
+	box-shadow: none;
+	width: 98%;
+	height: 98%;
+
+	.inline-input {
+		display: inline;
+	}
+}
+
+.is-revealing {
+	visibility: hidden;
+}
+
+.textarea {
+	display: block;
+	min-width: 100%;
+	resize: vertical;
+
+	.inline-textarea {
+		display: inline;
+		width: auto;
+	}
+}
+
+.button {
+	display: inline-flex;
+	@include font-family(heading);
+	@include font-size(7, mobile, true, false, true);
+	@if (get-font-size(7, desktop) != get-font-size(7, mobile)) {
+		@include media(">medium") {
+			@include font-size(7, desktop, true, false, true);
+		}
+	}
+	@include font-weight(bold);
+	line-height: 16px;
+	text-decoration: none !important;
+	background-color: color(bg, 1);
+	color: color(primary, 1) !important;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	justify-content: center;
+	padding: 16px 32px;
+	height: 48px;
+	text-align: center;
+	white-space: nowrap;
+
+	&:active {
+		outline: 0;
+	}
+
+	&::before {
+		border-radius: 2px;
+	}
+}
+
+.button-shadow {
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		box-shadow: 0 8px 16px rgba(color(typography, 1), 0.12);
+		mix-blend-mode: multiply;
+		transition: box-shadow 0.15s ease;
+	}
+
+	&:hover {
+		&::before {
+			box-shadow: 0 8px 16px rgba(color(typography, 1), 0.25);
+		}
+	}
+}
+
+.button-sm {
+	padding: 8px 24px;
+	height: 32px;
+
+	&.button-shadow {
+		&::before {
+			box-shadow: 0 4px 16px rgba(color(typography, 1), 0.12);
+		}
+
+		&:hover {
+			&::before {
+				box-shadow: 0 4px 16px rgba(color(typography, 1), 0.25);
+			}
+		}
+	}
+}
+
+.button-primary {
+	color: color(typography, 1i) !important;
+	transition: background 0.15s ease;
+}
+
+.button-primary {
+	background: mix(color(additional, 1), color(additional, 2));
+	background: linear-gradient(
+		65deg,
+		color(additional, 1) 0,
+		color(additional, 2) 100%
+	);
+
+	&:hover {
+		background: lighten(
+			mix(color(additional, 1), color(additional, 2)),
+			1%
+		);
+		background: linear-gradient(
+			65deg,
+			lighten(color(additional, 1), 1%) 0,
+			lighten(color(additional, 2), 1%) 100%
+		);
+	}
+
+	&.button-shadow {
+		&::before {
+			box-shadow: 0 8px 16px rgba(color(additional, 1), 0.25);
+		}
+
+		&:hover {
+			&::before {
+				box-shadow: 0 8px 16px rgba(color(additional, 1), 0.4);
+			}
+		}
+	}
 }
 
 .hero-illustration {
-    margin-top: 40px;
-    padding-bottom: 40px;
+	margin-top: 40px;
+	padding-bottom: 40px;
 
 	img,
-    svg {
-        width: 100%;
-        max-width: 320px;
-        height: auto;
-        margin: 0 auto;
-        overflow: visible;
-    }
+	svg {
+		width: 100%;
+		max-width: 320px;
+		height: auto;
+		margin: 0 auto;
+		overflow: visible;
+	}
 }
 
-@include media( '>medium' ) {
+@include media(">medium") {
+	.hero {
+		text-align: left;
+		padding-top: 92px;
+		padding-bottom: 80px;
 
-    .hero {
-        text-align: left;
-        padding-top: 92px;
-        padding-bottom: 80px;
+		&::before {
+			left: 620px;
+			height: 800px;
+			width: 100%;
+		}
+	}
 
-        &::before {
-            left: 620px;
-            height: 800px;
-            width: 100%;
-        }
-    }
+	.hero-inner {
+		/* Split hero in two half */
+		display: flex;
+	}
 
-    .hero-inner {
-        /* Split hero in two half */
-        display: flex;
-    }
+	.hero-copy {
+		padding-right: 48px;
+		min-width: 512px;
+	}
 
-    .hero-copy {
-        padding-right: 48px;
-        min-width: 512px;
-    }
-
-    .hero-illustration {
-        margin-top: -68px;
-        padding-bottom: 0;
+	.hero-illustration {
+		margin-top: -68px;
+		padding-bottom: 0;
 
 		img,
-        svg {
-            max-width: none;
-            width: 528px;
-        }
-    }
+		svg {
+			max-width: none;
+			width: 528px;
+		}
+	}
 }
 
-@include media( '>large' ) {
+@include media(">large") {
+	.hero {
+		&::before {
+			left: auto;
+			width: 43%;
+		}
+	}
 
-    .hero {
-
-        &::before {
-            left: auto;
-            width: 43%;
-        }
-    }
-
-    .hero-copy {
-        padding-right: 88px;
-        min-width: 552px;
-    }
+	.hero-copy {
+		padding-right: 88px;
+		min-width: 552px;
+	}
 }
